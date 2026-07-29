@@ -140,35 +140,40 @@ body {text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);}
 &lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="StoryDisplayTitle" tags="" position="300,300" size="100,100">//Othello//</tw-passagedata><tw-passagedata pid="3" name="StoryCaption" tags="" position="400,300" size="100,100">角色:$Name 
 身份:$Charactor
-提示：以防有人忘记前言我在这里再写一遍，输入栏首字母一定要大写</tw-passagedata><tw-passagedata pid="4" name="角色" tags="" position="650,550" size="100,100">&lt;&lt;if $Name !== undefined &amp;&amp; $Name.trim() eq &quot;Othello&quot;&gt;&gt;&lt;br&gt;
-&lt;&lt;set $Name to &quot;Othello?&quot;&gt;&gt;
-&lt;&lt;set $Charactor to &quot;主演?&quot;&gt;&gt;
-@@color:yellow;//是吗？保险起见，我还得再确认一下。//&lt;br&gt;@@
-@@color:yellow;//主演的诞生日是什么时候？//&lt;br&gt;@@
-&lt;&lt;textbox &quot;$Date&quot; &quot;主演的诞生日（月份日期xxxx）：&quot;&gt;&gt;
-&lt;&lt;linkreplace &quot;好了&quot; t8n&gt;&gt;
-&lt;&lt;if $Date !== undefined &amp;&amp; $Date.trim() eq &quot;0401&quot;&gt;&gt;
-&lt;&lt;set $Name to &quot;Othello&quot;&gt;&gt;
-&lt;&lt;set $Charactor to &quot;主演&quot;&gt;&gt;
-&lt;&lt;goto &quot;主演线&quot;&gt;&gt;
- &lt;&lt;else&gt;&gt;
-&lt;&lt;set $Name to &quot;欺瞒者&quot;&gt;&gt;
-&lt;&lt;set $Charactor to &quot;观众&quot;&gt;&gt;
-@@color:yellow;//不是所有人都能顶替这个身份的哦~//&lt;br&gt;@@
-[[好吧|观众线]]
-&lt;&lt;/if&gt;&gt;
-&lt;&lt;/linkreplace&gt;&gt;
+当前曲目:$Bgm
+提示：以防有人忘记前言我在这里再写一遍，输入栏首字母一定要大写</tw-passagedata><tw-passagedata pid="4" name="角色" tags="" position="650,550" size="100,100">&lt;&lt;if $Name !== undefined &amp;&amp; $Name.trim() eq &quot;Othello&quot;&gt;&gt;
+    &lt;&lt;set $Name to &quot;Othello?&quot;&gt;&gt;
+    &lt;&lt;set $Charactor to &quot;主演?&quot;&gt;&gt;
+    @@color:yellow;//是吗？保险起见，我还得再确认一下。//&lt;br&gt;@@
+    @@color:yellow;//主演的诞生日是什么时候？//&lt;br&gt;@@
+    &lt;&lt;textbox &quot;$Date&quot; &quot;主演的诞生日（月份日期xxxx）：&quot;&gt;&gt;
+    &lt;&lt;linkreplace &quot;好了&quot; t8n&gt;&gt;
+        &lt;&lt;if $Date !== undefined &amp;&amp; $Date.trim() eq &quot;0401&quot;&gt;&gt;
+            &lt;&lt;set $Name to &quot;Othello&quot;&gt;&gt;
+            &lt;&lt;set $Charactor to &quot;主演&quot;&gt;&gt;
+            &lt;&lt;goto &quot;主演线&quot;&gt;&gt;
+        &lt;&lt;else&gt;&gt;
+            &lt;&lt;set $Name to &quot;欺瞒者&quot;&gt;&gt;
+            &lt;&lt;set $Charactor to &quot;观众&quot;&gt;&gt;
+            @@color:yellow;//不是所有人都能顶替这个身份的哦~//&lt;br&gt;@@
+            [[好吧|观众线]]
+        &lt;&lt;/if&gt;&gt;
+    &lt;&lt;/linkreplace&gt;&gt;
 
-&lt;&lt;elseif $Name !== undefined &amp;&amp; $Name.trim() eq &quot;Real1ty_8520&quot;&gt;&gt;&lt;br&gt;
-&lt;&lt;set $Name to &quot;Real1ty_8520&quot;&gt;&gt;
-&lt;&lt;set $Charactor to &quot;协助者&quot;&gt;&gt;
-&lt;&lt;goto &quot;协助线&quot;&gt;&gt;
+&lt;&lt;elseif $Name !== undefined &amp;&amp; $Name.trim() eq &quot;Real1ty_8520&quot;&gt;&gt;
+    &lt;&lt;set $Name to &quot;Real1ty_8520&quot;&gt;&gt;
+    &lt;&lt;set $Charactor to &quot;协助者&quot;&gt;&gt;
+    &lt;&lt;goto &quot;协助线&quot;&gt;&gt;
+
+&lt;&lt;elseif $Name !== undefined &amp;&amp; ($Name.trim() == &quot;Lilya_0714&quot; || $Name.trim() == &quot;Filalit_&quot; || $Name.trim() == &quot;_Julia_V&quot; || $Name.trim() == &quot;Intetus258&quot;|| $Name.trim() == &quot;Morta111&quot;)&gt;&gt;
+    &lt;&lt;set $Name to $Name.trim()&gt;&gt;
+    &lt;&lt;set $Charactor to &quot;已见证者&quot;&gt;&gt;
+    &lt;&lt;goto &quot;彩蛋线&quot;&gt;&gt;
 
 &lt;&lt;else&gt;&gt;
-&lt;&lt;set $Name to ($Name !== undefined ? $Name.trim() : &quot;&quot;)&gt;&gt;
-&lt;&lt;set $Charactor to &quot;观众&quot;&gt;&gt;
-&lt;&lt;goto &quot;观众线&quot;&gt;&gt;
-
+    &lt;&lt;set $Name to ($Name !== undefined ? $Name.trim() : &quot;&quot;)&gt;&gt;
+    &lt;&lt;set $Charactor to &quot;观众&quot;&gt;&gt;
+    &lt;&lt;goto &quot;观众线&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="主演线" tags="" position="525,675" size="100,100">@@color:yellow;//噢噢！真是激动人心的重逢啊！希望你还记得我。//&lt;br&gt;@@
 &lt;&lt;linkreplace&quot;当然……&quot; t8n&gt;&gt;
 @@color:#B5AE92;怎么可能会忘记呢？&lt;br&gt;@@
@@ -351,6 +356,7 @@ body {text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);}
 有些线索不全在网页里，加油啊……
 &lt;&lt;set $Name to &quot;无名者&quot;&gt;&gt;
 &lt;&lt;set $Charactor to &quot;未定义&quot;&gt;&gt;
+&lt;&lt;set $Bgm to &quot;Othello&quot;&gt;&gt;
 
 [[我准备好了！|序言]]</tw-passagedata><tw-passagedata pid="13" name="结局1" tags="" position="650,1175" size="100,100">在你念出这个词语的时候，所有的声音都模糊了起来，你感觉自己的身体突然变得很轻再次感受到重力的时候，你眼前是熟悉的景象，梦醒了。
 &lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
@@ -481,6 +487,7 @@ body {text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);}
 &lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="结局2" tags="" position="525,1175" size="100,100">&lt;&lt;fadeSwitch &quot;bgm&quot; &quot;Sandcastle.mp3&quot;&gt;&gt;
 &lt;&lt;audio &quot;bgm&quot; loop play&gt;&gt;
+&lt;&lt;set $Bgm to &quot;Sandcastle&quot;&gt;&gt;
 @@color:#B5AE92;……&lt;br&gt;@@
 &lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
 @@color:#B5AE92;说得好像放弃是什么很轻而易举的事情&lt;br&gt;@@
@@ -639,6 +646,7 @@ body {text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);}
 
 </tw-passagedata><tw-passagedata pid="22" name="无解" tags="" position="775,1175" size="100,100">&lt;&lt;fadeSwitch &quot;bgm&quot; &quot;Echo.mp3&quot;&gt;&gt;
 &lt;&lt;audio &quot;bgm&quot; loop play&gt;&gt;
+&lt;&lt;set $Bgm to &quot;Echo&quot;&gt;&gt;
 @@color:#7c303d;//无论你的答案是什么，它都是对的，也可以说都是错的。//&lt;br&gt;@@
 &lt;&lt;linkreplace &quot;为什么？&quot;t8n&gt;&gt;
 @@color:#7c303d;//没人知道乌鸦为什么像打字机，就连作者本人也不知道。//&lt;br&gt;@@
@@ -720,6 +728,82 @@ body {text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);}
 @@color:#E5D7A0;来带你回去&lt;br&gt;@@
 结局三：沉梦之人，将醒之人
 &lt;img src=&quot;images/cg3.png&quot; width=&quot;400px&quot;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="彩蛋线" tags="" position="400,675" size="100,100">&lt;&lt;fadeSwitch &quot;bgm&quot; &quot;Echo.mp3&quot;&gt;&gt;
+&lt;&lt;audio &quot;bgm&quot; loop play&gt;&gt;
+&lt;&lt;set $Bgm to &quot;Echo&quot;&gt;&gt;
+
+&lt;&lt;if $Name == &quot;Lilya_0714&quot;&gt;&gt;
+&lt;&lt;set $Name to &quot;莉莉娅&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $Name == &quot;Filalit_&quot;&gt;&gt;
+&lt;&lt;set $Name to &quot;菲拉里特&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $Name == &quot;_Julia_V&quot;&gt;&gt;
+&lt;&lt;set $Name to &quot;尤里亚&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $Name == &quot;Intetus258&quot;&gt;&gt;
+&lt;&lt;set $Name to &quot;伊忒图斯&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $Name == &quot;Morta111&quot;&gt;&gt;
+&lt;&lt;set $Name to &quot;墨尔塔&quot;&gt;&gt;
+&lt;&lt;/if&gt;&gt;
+@@color:yellow;//Ismuse：噢！我想我们见过了对吗？//&lt;br&gt;@@
+&lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
+@@color:yellow;//Ismuse：$Name~$Name~这里没有别的东西了噢？$Name？//&lt;br&gt;@@
+&lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
+@@color:#7c303d;//好啦，既然是客人就要好好招待不是吗？//&lt;br&gt;@@
+&lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
+@@color:#009AFF;//Sogolsi：你已经被他的谜题困得够呛了，放心，这次只是休息。//&lt;br&gt;@@
+&lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
+&lt;span class=&quot;glow-text&quot;&gt;//Duffinxetine：辛苦了哦，$Name//&lt;/span&gt;&lt;br&gt;
+&lt;&lt;linkreplace&quot;这次又要干什么？&quot; t8n&gt;&gt;
+@@color:#7c303d;//嗯，再等等//&lt;br&gt;@@
+&lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
+@@color:#B5AE92;Othello：人怎么来得这样齐，还有……$Name？&lt;br&gt;@@
+@@color:#E5D7A0;Real1ty_8520：现在这是？&lt;br&gt;@@
+&lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
+@@color:#7c303d;//只是为解开谜题的你们小小庆祝一下而已//&lt;br&gt;@@
+&lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
+@@color:#B5AE92;Othello：这么说来$Name，完成其他两个结局的就是你和瑞亚还有其他四位同事吧？&lt;br&gt;@@
+@@color:#B5AE92;Othello：辛苦了@@
+&lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
+你们前方不知何时支起了一张茶桌，四周的景象也在改变。椅子和茶杯的数量刚刚好，不过梦里的茶点也会有味道吗？
+&lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
+@@color:#7c303d;//谁知道呢？//&lt;br&gt;@@
+&lt;&lt;linkreplace &quot;继续&quot;t8n&gt;&gt;
+等你醒来之时，床头多了一个礼物盒子
+&lt;&lt;linkreplace &quot;打开&quot;t8n&gt;&gt;
+&lt;&lt;if $Name == &quot;莉莉娅&quot;&gt;&gt;
+一个以你为原型的小巧玩偶，比你本人小得多，也毛绒得多。
+&lt;img src=&quot;images/lly.png&quot; width=&quot;400px&quot;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $Name == &quot;菲拉里特&quot;&gt;&gt;
+一个以你为原型的玩偶，比你本人小一些，更加毛绒。
+&lt;img src=&quot;images/fllt.png&quot; width=&quot;400px&quot;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $Name == &quot;尤里亚&quot;&gt;&gt;
+一个以你为原型的玩偶，比你本人小不了多少，但是毛绒绒的。
+&lt;img src=&quot;images/yly.png&quot; width=&quot;400px&quot;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $Name == &quot;伊忒图斯&quot;&gt;&gt;
+一个以你为原型的玩偶，比你本人小一些，毛绒绒的。
+&lt;img src=&quot;images/ytts.png&quot; width=&quot;400px&quot;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $Name == &quot;墨尔塔&quot;&gt;&gt;
+一个以你为原型的玩偶，比你本人小一些，毛绒绒的，只是腿部材质有些硬。
+&lt;img src=&quot;images/mrt.png&quot; width=&quot;400px&quot;&gt;
+&lt;&lt;/if&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
+&lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;/linkreplace&gt;&gt;
 &lt;&lt;/linkreplace&gt;&gt;</tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
